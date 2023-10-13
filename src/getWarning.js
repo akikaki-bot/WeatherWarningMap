@@ -65,7 +65,6 @@ async function DisplayWarning (){
             Areas.map(p => {
                 Object.values(JapanCitysLeafletData._layers).map(data => {
                     if(Number(data.feature.properties.regioncode) === p.Area.code) {
-                        console.log(WarningChange(p.Kinds.map(v => v)))
                         WarningChange(p.Kinds.map(v => v)).map(v => {
                             data.setStyle({ fillColor : v })
                         })  

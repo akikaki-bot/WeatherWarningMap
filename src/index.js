@@ -69,5 +69,5 @@ function MapInit () {
         STATE = 1
 
         DisplayWarning()
-        console.log(`Version ${__version__}`)
+        console.log(`Version ${__version__} beta`)
 }
