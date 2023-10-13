@@ -1,4 +1,5 @@
 
+let __version__ = "0.0.2"
 // Global Values!
 let globalMap = void 0;
 let JapanCitysLeafletData = void 0;
@@ -68,4 +69,5 @@ function MapInit () {
         STATE = 1
 
         DisplayWarning()
+        console.log(`Version ${__version__}`)
 }

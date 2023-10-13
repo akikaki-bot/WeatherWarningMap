@@ -66,7 +66,9 @@ async function DisplayWarning (){
                 Object.values(JapanCitysLeafletData._layers).map(data => {
                     if(Number(data.feature.properties.regioncode) === p.Area.code) {
                         console.log(WarningChange(p.Kinds.map(v => v)))
-                        data.setStyle({ fillColor : WarningChange(p.Kinds.map(v => v)) })
+                        WarningChange(p.Kinds.map(v => v)).map(v => {
+                            data.setStyle({ fillColor : v })
+                        })  
                     }
                 })
             })
@@ -90,14 +92,14 @@ function WarningChange ( state ) {
         if((/解除/).test(status)) return "#20B0FF" 
         switch( true ) {
             case (/解除/).test(stateName) : return "#20B0FF"
-            case (/なし/).test(stateName) : return "#081a1a"
+            //case (/なし/).test(stateName) : return "#081a1a"
             case (/注意報/).test(stateName) : return "#EFEF20"
             case (/警報/).test(stateName) : return "#FF2020"
             case (/特別警報/).test(stateName) : return "#FF00FF"
         }
     })
     if(warnings.length > 1){
-        return warnings.join(',').replace('#20B0FF',"").split(',')
+        return warnings.join(',').replace('#20B0FF,',"").split(',')
     }
     return warnings
 }
