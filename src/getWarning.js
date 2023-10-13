@@ -62,25 +62,42 @@ async function DisplayWarning (){
         const Areas = await GetWarning( ids )
     
         if(STATE === 1) {
-                Areas.map(p => {
-                    Object.values(JapanCitysLeafletData._layers).map(data => {
-                        if(Number(data.feature.properties.regioncode) === p.Area.code) {
-                            console.log(WarningChange(p.Kinds.map(v => v.Name)))
-                            data.setStyle({ fillColor : WarningChange(p.Kinds.map(v => v.Name)) })
-                        }
-                    })
+            Areas.map(p => {
+                Object.values(JapanCitysLeafletData._layers).map(data => {
+                    if(Number(data.feature.properties.regioncode) === p.Area.code) {
+                        console.log(WarningChange(p.Kinds.map(v => v)))
+                        data.setStyle({ fillColor : WarningChange(p.Kinds.map(v => v)) })
+                    }
                 })
+            })
         }
     })
 }
 
-function WarningChange ( state ) {
-    if(typeof state[0] === "undefined")  return "#081a1a"
-    switch( true ) {
-        case (/解除/).test(state[0]) : return "#20B0FF"
-        case (/なし/).test(state[0]) : return "#081a1a"
-        case (/注意報/).test(state[0]) : return "#EFEF20"
-        case (/警報/).test(state[0]) : return "#FF2020"
-        case (/特別警報/).test(state[0]) : return "#FF00FF"
+/**
+ * 
+ * @param {string[]} state 
+ * @returns {string[]}
+ */
+function WarningChange ( state ) {  
+    const warnings = state.map(state => {
+        const stateName = state.Name
+        const status = state.Status
+    
+        if(typeof stateName === "undefined")  return "#081a1a"
+    
+    
+        if((/解除/).test(status)) return "#20B0FF" 
+        switch( true ) {
+            case (/解除/).test(stateName) : return "#20B0FF"
+            case (/なし/).test(stateName) : return "#081a1a"
+            case (/注意報/).test(stateName) : return "#EFEF20"
+            case (/警報/).test(stateName) : return "#FF2020"
+            case (/特別警報/).test(stateName) : return "#FF00FF"
+        }
+    })
+    if(warnings.length > 1){
+        return warnings.join(',').replace('#20B0FF',"").split(',')
     }
+    return warnings
 }
