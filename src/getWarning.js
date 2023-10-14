@@ -74,11 +74,15 @@ async function DisplayWarning (){
                 Object.values(JapanCitysLeafletData._layers).map(data => {
                     if(Number(data.feature.properties.regioncode) === p.Area.code) {
                         WarningChange(p.Kinds.map(v => v)).map(v => {
-                            data.setStyle({ fillColor : v })
+                            data.setStyle({ 
+                                fillColor : v,
+                                fillOpacity : 0.4
+                            })
                         })  
                     }
                 })
             })
+            console.log(`Completed`)
         }
     })
 }

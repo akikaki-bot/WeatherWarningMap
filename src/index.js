@@ -44,7 +44,7 @@ function MapInit () {
             const japanCitysGeo = L.geoJSON(geojson, {
                 style : function(geojson) {
                     return {
-                        weight : 1,
+                        weight : 0.8,
                         color: "#999999",
                         fillColor : "#081a1a"
                   }
