@@ -2,7 +2,7 @@
 let __version__ = "0.0.2"
 // Global Values!
 let globalMap = void 0;
-let JapanCitysLeafletData = void 0;
+let JapanCitysLeafletData = undefined;
 let japanCitys = void 0;
 
 let Maingeo = void 0;

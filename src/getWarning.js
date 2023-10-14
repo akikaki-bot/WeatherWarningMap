@@ -59,7 +59,7 @@ async function GetWarning ( id ) {
 async function DisplayWarning (){
     const TodayWarnings = await DisplayExtraCodes()
 
-    if(typeof JapanCitysLeafletData._layers === "undefined") {
+    if(typeof JapanCitysLeafletData === "undefined") {
         return setTimeout(() => {
             console.log('The Leaflet map cant editable. retry in 5s.')
             DisplayWarning() 
