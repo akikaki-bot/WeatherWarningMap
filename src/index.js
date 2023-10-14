@@ -67,6 +67,8 @@ function MapInit () {
 
         STATE = 1
 
-        DisplayWarning()
+        setTimeout(() => {
+            DisplayWarning()
+        }, 2000)
         console.log(`Version ${__version__} beta`)
 }
