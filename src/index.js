@@ -31,6 +31,7 @@ function MapInit () {
                 style : function(geojson) {
                     return {
                         weight : 0.3,
+                        color : "#081a1a",
                         fillColor : "#081a1a"
                     }
                 }
