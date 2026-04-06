@@ -13,7 +13,7 @@ const GetDatas = [
 ]
 
 async function GetExtra ( ){
-    const response = await fetch(`https://jxp.aknet.tech/v1/extra`, {
+    const response = await fetch(`https://jxp.akikaki.net/v1/extra`, {
         mode : "cors"
     })
 
@@ -48,7 +48,7 @@ async function DisplayExtraCodes(){
 }
 
 async function GetWarning ( id ) {
-    const response = await fetch(`https://jxp.aknet.tech/v1/vpww53/parse?id=${id}`, {
+    const response = await fetch(`https://jxp.akikaki.net/v1/vpww53/parse?id=${id}`, {
         mode : "cors"
     })
 
